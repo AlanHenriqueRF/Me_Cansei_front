@@ -1,3 +1,3 @@
 export default function SingUpPage(){
-    return (<></>)
+    return (<>ola</>)
 }
