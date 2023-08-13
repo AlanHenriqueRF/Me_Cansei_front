@@ -9,13 +9,33 @@ export default function SingInPage(){
     const [active,setActive] = useState(false);
     const navigate = useNavigate();
 
+    const [menssage,setMessage] = useState();
+
     function signin(e){
         e.preventDefault();
-        console.log(email,password)
-        /* Apiperfil.login()  setActive(true);*/
-    }
+        setActive(true)
+        
+        Apiperfil.login({email,password})
+            .then((res)=>{
+                const {token} = res.data
+                setMessage('')
+                navigate('/home')
 
-    
+            })
+            .catch((err)=>{
+                console.log(err.response)
+                setActive(false)
+                if (err.response.status === 404){
+                    setMessage('Email não cadastrado!')
+                }
+                if (err.response.status === 401){
+                    setMessage('Senha incorreta!')
+                }
+                if (err.response.status === 422){
+                    setMessage('Email e/ou senha devem ser validos!')
+                }
+            })
+    }
 
     return (
         <>
@@ -28,11 +48,12 @@ export default function SingInPage(){
                         <input type="email" id="email" disabled={active} placeholder='email' value={email} onChange={(e)=>{setEmail(e.target.value)}} autoComplete="false" required/>
                         <label htmlFor="password">Digite sua senha</label>
                         <input type="password" id="password" disabled={active} placeholder='password' value={password} onChange={(e)=>{setPasword(e.target.value)}} autoComplete='false' required />
-                        <Button type='submit'>{'Entrar'}</Button>
+                        <Button type='submit' disabled={active} >{'Entrar'}</Button>
                     </Forms>
                     <Link to='/SignUp'>
                         Não tem uma conta? Cadastre-se!
-                    </Link>
+                    </Link><br/>
+                    <h2>{menssage}</h2>
                 </Container_filho>
             </Container>
         </>
@@ -57,6 +78,12 @@ const Container_filho = styled.div`
     h1{
         font-size:26px;
         padding:25px 25px 13px 25px;        
+    }
+
+    h2 {
+        color: red;
+        
+        /* padding:25px 25px 13px 25px; */
     }
 
     a {
