@@ -18,7 +18,7 @@ export default function SingUpPage(){
     const token = localStorage.getItem('token')
     useEffect(()=>{
         if (token){
-            navigate('/home')
+            navigate('/shoe')
             return 
         }
     },[])

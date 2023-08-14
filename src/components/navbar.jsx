@@ -10,7 +10,7 @@ export default function Navbar() {
    
     return (
         <Navbarstyle>
-            <Link to='/home'><img src={Logo} alt="Logo" /></Link>
+            <Link to='/shoe'><img src={Logo} alt="Logo" /></Link>
             {/* <ChevronDownOutline
             color={'#000000'} 
             title={'filtro'}

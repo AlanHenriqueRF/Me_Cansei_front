@@ -7,7 +7,7 @@ export default function Footer() {
     const navigate = useNavigate();
 
     function vai_para_cadastro(){
-        navigate('/home/newShoe')
+        navigate('/shoe/new')
     }
    
     return (

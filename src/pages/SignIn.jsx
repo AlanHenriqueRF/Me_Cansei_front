@@ -14,7 +14,7 @@ export default function SingInPage(){
     const token = localStorage.getItem('token')
     useEffect(()=>{
         if (token){
-            navigate('/home')
+            navigate('/shoe')
             return 
         }
     },[])
@@ -28,7 +28,7 @@ export default function SingInPage(){
             .then((res)=>{
                 const {token} = res.data
                 setMessage('')
-                navigate('/home')
+                navigate('/shoe')
                 localStorage.setItem("token",(token))
 
             })
