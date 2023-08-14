@@ -15,6 +15,14 @@ export default function SingUpPage(){
 
     const [menssage,setMessage] = useState();
 
+    const token = localStorage.getItem('token')
+    useEffect(()=>{
+        if (token){
+            navigate('/home')
+            return 
+        }
+    },[])
+
     function signin(e){
         e.preventDefault();
 
@@ -89,11 +97,9 @@ const Container = styled.div`
     justify-content:center;
     height:100vh;
     align-items:center;
-    background-color: blue;
 `
 
 const Container_filho = styled.div`
-    background-color: yellow;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -143,7 +149,6 @@ const Forms=styled.form`
 
 const Button = styled.button`
     background-color:#52B6FF;
-    /* opacity:${props=>props.opacity}; */
     display:flex;
     justify-content:center;
     align-items:center;

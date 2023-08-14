@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { styled } from "styled-components"
 import Apiperfil from "../service/perfil";
@@ -8,8 +8,17 @@ export default function SingInPage(){
     const [password,setPasword]= useState();
     const [active,setActive] = useState(false);
     const navigate = useNavigate();
+    
 
     const [menssage,setMessage] = useState();
+    const token = localStorage.getItem('token')
+    useEffect(()=>{
+        if (token){
+            navigate('/home')
+            return 
+        }
+    },[])
+    
 
     function signin(e){
         e.preventDefault();
@@ -20,6 +29,7 @@ export default function SingInPage(){
                 const {token} = res.data
                 setMessage('')
                 navigate('/home')
+                localStorage.setItem("token",(token))
 
             })
             .catch((err)=>{
@@ -66,11 +76,9 @@ const Container = styled.div`
     justify-content:center;
     height:100vh;
     align-items:center;
-    background-color: blue;
 `
 
 const Container_filho = styled.div`
-    background-color: yellow;
     display: flex;
     flex-direction: column;
     align-items: center;

@@ -4,12 +4,19 @@ import Footer from "../components/footer"
 import { useEffect, useState } from "react"
 import { Tenis } from "../components/Tenis"
 import Apishoes from "../service/shoes"
+import { useNavigate } from "react-router-dom"
 
 
 export default function Home() {
     const [tenis,setTenis] = useState([]);
-    
+    const token = localStorage.getItem('token')
+    const navigate =useNavigate()
     useEffect(()=>{
+        if (!token){
+            navigate('/')
+            return 
+            
+        }
         Apishoes.getall()
             .then((res)=>{
                 setTenis(res.data)

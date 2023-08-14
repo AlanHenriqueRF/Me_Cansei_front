@@ -5,6 +5,7 @@ import SingUpPage from "./pages/SignUp"
 import Home from "./pages/home"
 import Shoespage from "./pages/shoes"
 import User from "./pages/user"
+import Newshoepage from "./pages/newshoepage"
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <Route path='/SignUp' element={<SingUpPage/>}/>
         <Route path='/home' element={<Home/>}/> 
         <Route path='/home/:id' element={<Shoespage/>}/> 
+        <Route path='/home/newShoe' element={<Newshoepage/>}/> 
         <Route path='/user' element={<User/>}/> 
        </Routes>
     </BrowserRouter>

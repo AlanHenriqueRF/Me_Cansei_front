@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
 import { styled } from "styled-components";
@@ -8,8 +8,14 @@ import Apishoes from "../service/shoes";
 export default function Shoespage() {
     const { id } = useParams();
     const [tenis, setTenis] = useState([])
+    const token = localStorage.getItem('token')
+    const navigate = useNavigate();
 
     useEffect(() => {
+        if (!token){
+            navigate('/')
+            return 
+        }
         Apishoes.getid(id)
             .then((res) => {
                 setTenis(res.data)

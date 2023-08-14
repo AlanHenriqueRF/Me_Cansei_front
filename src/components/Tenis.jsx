@@ -4,7 +4,13 @@ import { styled } from "styled-components";
 export function Tenis(props) {
     const { url_shoes, shoesname, size, price_cents, color,id } = props.tenis_obj;
     const navigate = useNavigate();
+    const token = localStorage.getItem('token')
     function aqueletenis(){
+        if (!token){
+            navigate('/')
+            return
+        }
+
         navigate(`/home/${id}`)
     }
     return (

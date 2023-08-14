@@ -11,5 +11,10 @@ function getid(id){
     const promise = axios.get(BASE_URL+`/shoes/${id}`)
     return promise
 } 
-const Apishoes = {getall,getid}
+
+function post_shoe(config,body){
+    const promise = axios.post(BASE_URL+`/shoes/new`,body,config)
+    return promise
+}
+const Apishoes = {getall,getid,post_shoe}
 export default Apishoes

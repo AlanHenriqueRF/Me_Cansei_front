@@ -1,13 +1,18 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import styled from "styled-components"
 import { ChevronForwardSharp } from 'react-ionicons'
 
 
 export default function Footer() {
+    const navigate = useNavigate();
+
+    function vai_para_cadastro(){
+        navigate('/home/newShoe')
+    }
    
     return (
         <Footerstyle>
-            <Container >
+            <Container onClick={()=>{vai_para_cadastro()}} >
                 
                     <h1>FAÇA AGORA O SEU ANÚNCIO</h1>
                     <ChevronForwardSharp
