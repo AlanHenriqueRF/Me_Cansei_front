@@ -41,7 +41,7 @@ export default function Newshoepage(){
         Apishoes.post_shoe(config,body)
             .then((res)=>{
                 setMessage('')
-                navigate('/shoe')
+                navigate('/shoes')
             })
             .catch((err)=>{
                 console.log(err.response)

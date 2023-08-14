@@ -11,7 +11,7 @@ export function Tenis(props) {
             return
         }
 
-        navigate(`/shoe/${id}`)
+        navigate(`/shoes/${id}`)
     }
     return (
         <li onClick={()=>aqueletenis()}>
