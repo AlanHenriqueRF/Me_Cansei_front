@@ -10,6 +10,7 @@ export default function SingUpPage(){
     const [name, setName] = useState();
     const [cellnumber,setCellnumber]= useState();
     const [confir, setConfir]=useState();
+    const [cpf,setCpf]=useState();
     const navigate = useNavigate();
 
     const [menssage,setMessage] = useState();
@@ -23,8 +24,13 @@ export default function SingUpPage(){
             setMessage('A senha e a confirmação de senha devem ser iguais!')
             return 
         }
+        if (cpf.includes('.') || cpf.includes('-')){
+            setActive(false)
+            setMessage('Por favor digitar o cpf sem nenhum caracter especial, APENAS NÚMEROS!')
+            return 
+        }
 
-        Apiperfil.cadastro({email,password,name,cellnumber})
+        Apiperfil.cadastro({email,password,name,cellnumber,cpf})
             .then((res)=>{
                 setMessage('')
                 navigate('/')
@@ -50,12 +56,19 @@ export default function SingUpPage(){
                     <Forms onSubmit={(e)=>{signin(e)}}>
                         <label htmlFor="nome">Digite seu nome</label>
                         <input type="text" id="nome" disabled={active} placeholder='nome' value={name} onChange={(e)=>{setName(e.target.value)}} required/>
+                        
+                        <label htmlFor="cpf">Digite seu CPF</label>
+                        <input type="text" id="cpf" disabled={active} placeholder='cpf' value={cpf} onChange={(e)=>{setCpf(e.target.value)}} required/>
+
                         <label htmlFor="telefone">Digite seu némero de telefone</label>
                         <input type="tel" id="telefone" placeholder="(xx) xxxxx-xxxx" value={cellnumber} onChange={(e)=>{setCellnumber(e.target.value)}} required/>
+                        
                         <label htmlFor="email">Digite seu email</label>
                         <input type="email" id="email" disabled={active} placeholder='email' value={email} onChange={(e)=>{setEmail(e.target.value)}} required/>
+                        
                         <label htmlFor="password">Digite uma senha</label>
                         <input type="password" id="password" disabled={active} placeholder='Senha' value={password} onChange={(e)=>{setPasword(e.target.value)}} required />
+                        
                         <label htmlFor="confirm_password">Digite uma senha</label>
                         <input type="password" id="confirm_password" disabled={active} placeholder='confirme a senha' value={confir} onChange={(e)=>{setConfir(e.target.value)}} required />
                         <Button type='submit' disabled={active} >{'Entrar'}</Button>
