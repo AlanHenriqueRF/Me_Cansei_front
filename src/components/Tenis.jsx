@@ -1,24 +1,29 @@
+import { useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
 
 export function Tenis(props) {
-    const { link, name, size, price, color } = props.tenis_obj;
+    const { url_shoes, shoesname, size, price_cents, color,id } = props.tenis_obj;
+    const navigate = useNavigate();
+    function aqueletenis(){
+        navigate(`/home/${id}`)
+    }
     return (
-        <li>
+        <li onClick={()=>aqueletenis()}>
             <Container>
                 <Primeiradiv>
                     <ImageTenis>
 
-                        <img src={link} alt={name} />
+                        <img src={url_shoes} alt={shoesname} />
 
                     </ImageTenis>
                     <Informacoes>
-                        <h2>{name}</h2>
+                        <h2>{shoesname}</h2>
                         <h3>Tamanho: {size}</h3>
                         <h3>Cor: {color}</h3>
                     </Informacoes>
                 </Primeiradiv>
                 <Price>
-                    <h6>R$ {price / 100},00</h6>
+                    <h6>R$ {price_cents / 100},00</h6>
                 </Price>
             </Container>
         </li>
@@ -33,6 +38,8 @@ const Container = styled.div`
     justify-content: space-between;
     min-width:320px;
     max-width: 1300px;
+
+    box-shadow: gray 0px 3px 4px -1px, gray 2px 3px 4px -1px;
 
     height:92px;
 
@@ -52,7 +59,7 @@ const ImageTenis = styled.div`
     img {
         width: 100%;
         height: 100%;
-        object-fit: contain; /* Ajuste para suas necessidades */
+        object-fit: contain;
     }
     
 `

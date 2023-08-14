@@ -10,20 +10,20 @@ export default function Navbar() {
    
     return (
         <Navbarstyle>
-            <img src={Logo} alt="Logo" />
-            <ChevronDownOutline
+            <Link to='/home'><img src={Logo} alt="Logo" /></Link>
+            {/* <ChevronDownOutline
             color={'#000000'} 
             title={'filtro'}
             height="25px"
-            width="25px"/>
+            width="25px"/> */}
            
                 
-            <SearchSharp
+            {/* <SearchSharp
             color={'#000000'} 
             title={'Buscar'}
             height="25px"
             width="25px"
-            />
+            /> */}
             
             <PersonSharp
             color={'#000000'} 
@@ -46,17 +46,21 @@ const Navbarstyle = styled.div`
     background-color:#ffffff;
     box-shadow: 0px 4px 4px 0px #00000026;
     align-items:center;
-    /* justify-content:space-between; */
+    justify-content:space-between; /**/
 
     img{
         width:87px;
         height: 70px;
         padding-left:7px;
         position: relative;
-        padding-right: calc(100vw - 178px);
+        /* padding-right: calc(100vw - 178px); */
 
     }
+
     :nth-child(2){
+        padding-right:11px;
+    }
+    /* :nth-child(2){
         padding-top:34px;
         position: absolute;
         left: 72px;
@@ -64,6 +68,6 @@ const Navbarstyle = styled.div`
 
     :nth-child(3){
         padding:11px;
-    }
+    } */
 
 `
