@@ -28,7 +28,7 @@ export default function SingInPage(){
             .then((res)=>{
                 const {token} = res.data
                 setMessage('')
-                navigate('/shoe')
+                navigate('/shoes')
                 localStorage.setItem("token",(token))
 
             })
