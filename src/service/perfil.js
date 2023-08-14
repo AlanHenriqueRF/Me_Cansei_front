@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL =`${import.meta.env.VITE_API_URL}`
+const BASE_URL =`https://mecanseiapi.onrender.com`
 
 function login(body){
     const promise = axios.post(BASE_URL+'/Signin',body)
