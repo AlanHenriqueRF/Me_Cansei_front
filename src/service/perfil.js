@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL =`https://mecanseiapi.onrender.com`
+const BASE_URL =`${import.meta.env.VITE_API_URL}`
 
 function login(body){
     const promise = axios.post(BASE_URL+'/Signin',body)
@@ -8,7 +8,7 @@ function login(body){
 }
 
 function cadastro(body){
-    const promise = axios.post(BASE_URL+'/Signup',body)
+    const promise = axios.post(BASE_URL+'/SignUp',body)
     return promise
 }
 const Apiperfil = {cadastro,login}
